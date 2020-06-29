@@ -2,11 +2,11 @@
 
 class Tools {
 
-    public static function addCommenToOrder($order_id) {
+    public static function addCommenToOrder($order_id, $comment = "") {
         Bitrix\Main\Loader::includeModule('sale');
 
         $order = \Bitrix\Sale\Order::load($order_id);
-        $order->setField("USER_DESCRIPTION", "Доставить к подъезду");
+        $order->setField("COMMENTS", $comment);
 
         $shipmentCollection = $order->getShipmentCollection();
 
